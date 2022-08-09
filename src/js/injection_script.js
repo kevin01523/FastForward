@@ -2774,7 +2774,7 @@ domainBypass("clk.asia", () => {
   });
 domainBypass("ckk.ai", () => {
 		const token = document.querySelector('#link-view [name="token"]').value;
-		const decoded = atob(token.substring(token.indexOf("aHR0")));
+		const decoded = atob(token.substring(token.indexOf("aH")));
 		const page = decoded.split('http').pop();
 		const link = `http${page}`;
 		safelyNavigate(link);
