@@ -2732,14 +2732,6 @@ domainBypass('apkadmin.com', () => {
 	})
 	hrefBypass(/mirrored\.to\/(down|get)link\//,()=>ifElement(".centered.highlight a[href]",safelyNavigate))
 
-
-	domainBypass("tei.ai", () => {
-		const token = document.querySelector('#link-view [name="token"]').value;
-		const decoded = atob(token.substring(token.indexOf("aHR0")));
-		const page = decoded.split('http').pop();
-		const link = `http${page}`;
-		safelyNavigate(link);
-	});
 domainBypass("filedm.com",()=>{awaitElement("a#dlbutton",a=>{
     safelyNavigate("http://directdl.xyz/dm.php?id="+a.href.split("_")[1])}
 )})
@@ -2780,7 +2772,13 @@ domainBypass("clk.asia", () => {
       safelyNavigate(link);
     });
   });
-
+domainBypass("ckk.ai", () => {
+		const token = document.querySelector('#link-view [name="token"]').value;
+		const decoded = atob(token.substring(token.indexOf("aHR0")));
+		const page = decoded.split('http').pop();
+		const link = `http${page}`;
+		safelyNavigate(link);
+});
 	//Insertion point for bypasses detecting certain DOM elements. Bypasses here will no longer need to call ensureDomLoaded.
 	domainBypass('letsboost.net', () => {
 		return safelyAssign(JSON.parse(stepDat).pop().url)
